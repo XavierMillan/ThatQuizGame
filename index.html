@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="HandheldFriendly" content="true" />
+    <title>That Quiz Game</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="style.css">
+    
+   
+  </head>
+
+
+  
+  <body onload="getData('https://opentdb.com/api.php?amount=10&type=multiple'); updateData(0)">
+  
+<!--  <body>-->
+   
+
+    <div class="container">
+      <div class="section">
+<!--         Header Start -->
+        <div class="columns is-centered">
+          <div class="column has-text-centered ">
+            <h1 class="title" style="color: black;">That Quiz Game</h1><br>
+          </div>
+        </div>
+<!--             Header End -->
+        
+
+            <div class="card">
+
+              <div class="card-content">
+                <div class="media">
+
+                  <div class="media-content">
+                    <p class="title is-4 no-padding" id="question">Question #</p>
+                      
+                    <p class="subtitle is-6" id="details">Question Details</p>
+                    
+                    </div>
+                </div>
+                <div style="line-height: 10px;" class="content">
+                  
+                  <button class="button" id="ans1" onclick="checkAnswer('ans1')">Choice 1</button>
+                  <br>
+                  <br>
+                  <button class="button" id="ans2" onclick="checkAnswer('ans2')">Choice 2 </button>
+                  <br>
+                  <br>
+                  <button class="button" id="ans3" onclick="checkAnswer('ans3')">Choice 3</button>
+                  <br>
+                  <br>
+                  <button class="button" id="ans4" onclick="checkAnswer('ans4')">Choice 4</button>
+
+                </div>
+              </div>
+              
+            </div>
+
+              <br>
+             <div class="Progress_Status">
+                <div id="myprogressBar_QuestionProgress">0%</div>
+                 <br>
+                    
+            </div>
+        <br>
+        
+        <br>
+        <button class="button" id="restartGame" onclick="location.reload();">Play Again</button>
+<!--         <button class="button" id="record" onclick="saveAspdf();">record</button> -->
+        
+        </div>
+      </div>
+
+      <div class="section">
+     
+      
+    </div>
+<!-- 
+    <button id="myBtn">Open Modal</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 id=modalText>Some text in the Modal..</h1>
+      <canvas id="myChart" width="300" height="300"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--      <script src="script.js.chart">-->
+
+      </script>
+  </div>
+
+</div>
+     
+<!--     <footer class="footer">
+      
+    </footer> -->
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="../js/cardsData.js"></script>
+    <script src=script.js></script>
+
+
+    <!-- Using Vue to populate cards to reduce redundant code -->
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          cardData: cardsData
+        }
+      })
+
+    </script>
+    
+  </body>
+
+</html>

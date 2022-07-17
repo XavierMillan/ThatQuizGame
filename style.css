@@ -1,0 +1,234 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+/* For Mobile */
+@media screen and (max-width: 540px) and (orientation: portrait){
+    .view {
+        width: 400px;
+    }
+
+  
+  .card{
+  height: 50%;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.Progress_Status {
+  margin-left: 5%;
+  width: 90%;
+  height: 35px;
+  background-color: #ddd;
+    border-radius: 20px;
+}
+.button{
+  border-radius: 20px;
+}
+ .button:active{
+      background-color:#4CAF50;
+      transition: 0.7s;
+  }
+
+#reload{
+  background-color: #ddd;
+  border-radius: 20px;
+  margin:0 auto;
+    display:block;
+  width: 10%;
+}
+
+#reload.hover{
+   background-color:#4CAF50;
+      transition: 0.7s;
+}
+
+/* .buttonGroup{
+  margin-left: 25%;
+  text-align: center;
+  margin-right: 25%;
+} */
+
+#myprogressBar_QuestionProgress {
+  width: 0%;
+  height: 35px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 32px;
+  color: black;
+  border-radius: 20px;
+  
+}
+  /* Modal Content */
+  .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 20px;
+  margin-top: 15%;
+}
+#modalText{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  #restartGame{
+  border-radius: 20px;
+  margin-left: 25%;
+  margin:0 auto;
+  display:block;
+  width: 30%;
+} 
+#restartGame:hover{
+   background-color:#ff0000;
+    transition: 0.7s;
+}
+
+  
+}
+
+/* For Computerss */
+@media screen and (min-width: 540px) and (orientation: landscape) {
+    .view {
+        width: 600px;
+    }
+  .card{
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.Progress_Status {
+  margin-left: 25%;
+  width: 50%;
+  height: 35px;
+  background-color: #ddd;
+    border-radius: 20px;
+}
+.button{
+  border-radius: 20px;
+}
+.button:hover {
+      background-color:#4CAF50;
+      transition: 0.7s;
+  }
+
+#restartGame{
+  border-radius: 20px;
+  margin-left: 25%;
+  margin:0 auto;
+  display:block;
+  width: 10%;
+} 
+#restartGame:hover{
+   background-color:#ff0000;
+    transition: 0.7s;
+}
+
+/* .buttonGroup{
+  margin-left: 25%;
+  text-align: center;
+  margin-right: 25%;
+} */
+
+#myprogressBar_QuestionProgress {
+  width: 0%;
+  height: 35px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 32px;
+  color: black;
+  border-radius: 20px;
+}
+
+  .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 35%;
+  border-radius: 20px;
+}
+#modalText{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+  
+}
+
