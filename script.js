@@ -11,12 +11,14 @@ let done = false;
 let arrScoreData = [];
 
 let pdf = new jsPDF('p','pt','a4');
+
+let userAnswers = [];
   
 function update(idname) {
     var width = document.getElementById(idname).innerText;
-    console.log(width);
+    // console.log(width);
     width = parseFloat(width);
-    console.log(width);
+    // console.log(width);
 
     width+=10;
     // qNum=width;
@@ -32,9 +34,9 @@ function update(idname) {
 
 function reduce(idname) {
     var width = document.getElementById(idname).textContent;
-    console.log(width);
+    // console.log(width);
     width = parseFloat(width);
-    console.log(width);
+    // console.log(width);
 
     width-=10;
 
@@ -66,7 +68,6 @@ function randomArrayShuffle(array) {
   return array;
 }
 
-
 function Get(yourUrl){
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",yourUrl,false);
@@ -82,7 +83,6 @@ function returnJSON(yourUrl){
   
 }
 
-
 function getData(yourUrl){
   json_obj = returnJSON(yourUrl);
   console.log(json_obj);
@@ -93,7 +93,7 @@ function getData(yourUrl){
 
 function updateData(quesNum){
   let i = quesNum;
-  console.log(json_obj.results[i]);
+  // console.log(json_obj.results[i]);
 
   let details = json_obj.results[i].category;
   let question = json_obj.results[i].question;
@@ -103,19 +103,19 @@ function updateData(quesNum){
   let ic3 = json_obj.results[i].incorrect_answers[2];
 
   const answersArr = [correct,ic1,ic2,ic3];
-  console.log(answersArr);
+  // console.log(answersArr);
  
   const shuffleArr = randomArrayShuffle(answersArr);
-  console.log(shuffleArr);
+  // console.log(shuffleArr);
 
   QuestionAnswer = correct;
     
-  console.log(details);
-  console.log(question);
-  console.log(correct);
-  console.log(ic1);
-  console.log(ic2);
-  console.log(ic3);
+  // console.log(details);
+  // console.log(question);
+  // console.log(correct);
+  // console.log(ic1);
+  // console.log(ic2);
+  // console.log(ic3);
 
   pdf.text(question);
 
@@ -146,11 +146,18 @@ function setQuestion(question, details, correct, answersArr){
 
 function checkAnswer(buttonid){
   let button = document.getElementById(buttonid).innerHTML;
+  button = button.replace("&amp;",/&/g).replace("&gt;",/>/g).replace("&lt;",/</g).replace("&quot;",/"/g).replace("&apos;",/'/);
+  QuestionAnswer = QuestionAnswer.replace("&amp;",/&/g).replace("&gt;",/>/g).replace("&lt;",/</g).replace("&quot;",/"/g).replace("&apos;",/'/);
   if(button == QuestionAnswer){
     NumberCorrect++;
-     console.log(NumberCorrect);
+    // console.log(NumberCorrect);
+    userAnswers[qNum] = '\u{1F7E9}';
     
+  }else{
+    userAnswers[qNum] = '\u{1F7E5}';
   }
+
+  userAnswers[qNum] += ' '+button;
 
   if(qNum==9){
     document.getElementById("ans1").setAttribute('disabled','disabled');
@@ -159,42 +166,41 @@ function checkAnswer(buttonid){
     document.getElementById("ans4").setAttribute('disabled','disabled');
     update('myprogressBar_QuestionProgress');
     // update('myprogressBar_QuestionProgress');
-    console.log('done');
+    // console.log('done');
     done = true;
     
     
-  }else{
+  }
+  else{
   
-  console.log(qNum);
-   qNum++;
-  console.log(document.getElementById('myprogressBar_QuestionProgress').innerText);
+    // console.log(qNum);
+    qNum++;
+    // console.log(document.getElementById('myprogressBar_QuestionProgress').innerText);
+    updateData(qNum);
+    update('myprogressBar_QuestionProgress');
   
-  updateData(qNum);
-  update('myprogressBar_QuestionProgress');
-  
-}
+  }
 
   if(done){
     setTimeout(function(){
-      modal.style.display = "block";
-      let modalText = document.getElementById("modalText");
-      updateLocalStorage();
-      chart();
-      let avgScore = localStorage.getItem('scoreAvg');
-      modalText.innerHTML = NumberCorrect+ " out of 10 Correct!" + "<br>"+ "Average Score: " + parseFloat(avgScore).toFixed(3);
-
+    modal.style.display = "block";
+    let modalText = document.getElementById("modalText");
+    updateLocalStorage();
+    chart();
+    let avgScore = localStorage.getItem('scoreAvg');
+    modalText.innerHTML = NumberCorrect+ " out of 10 Correct!" + "<br>"+ "Average Score: " +     parseFloat(avgScore).toFixed(3);
       span.onclick = function() {
       modal.style.display = "none";
       }
 
-// When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
+    // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
 }
 
-}, 500); //end of delay
+    }, 500); //end of delay
    
   }
 
@@ -415,12 +421,20 @@ function chart(){
     });
 }
 
-
-
-
-function saveAspdf() {
+// function saveAspdf() {
         
-            pdf.save('web.pdf');
-    }
+//             pdf.save('web.pdf');
+//     }
+
+function copyText() {
+  
+  let resultString = "That Quiz Game"+ '\n'+NumberCorrect+ " out of 10 Correct! " + '\n';
+  for(let j = 0; j<10; j++){
+    resultString += userAnswers[j] + '\n';
+  }
+  
+  navigator.clipboard.writeText(resultString);
+}
+
 
 

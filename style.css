@@ -3,10 +3,19 @@ html, body {
   width: 100%;
 }
 
+#card{
+  margin-left: 25%;
+}
 
+#modalButtons{
+  display: flex;
+  justify-content: center;
+}
+
+  
 
 /* For Mobile */
-@media screen and (max-width: 540px) and (orientation: portrait){
+@media screen and (max-width: 540px) {
     .view {
         width: 400px;
     }
@@ -89,7 +98,9 @@ html, body {
   width: 80%;
   border-radius: 20px;
   margin-top: 15%;
+  
 }
+
 #modalText{
   text-align: center;
   font-size: 20px;
@@ -127,7 +138,7 @@ html, body {
 }
 
 /* For Computerss */
-@media screen and (min-width: 540px) and (orientation: landscape) {
+@media screen and (min-width: 540px) {
     .view {
         width: 600px;
     }
@@ -159,7 +170,7 @@ html, body {
   margin-left: 25%;
   margin:0 auto;
   display:block;
-  width: 10%;
+  width: min-content;
 } 
 #restartGame:hover{
    background-color:#ff0000;
