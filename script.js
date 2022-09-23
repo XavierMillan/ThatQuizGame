@@ -58,7 +58,7 @@ function printJSON(yourUrl){
 
 function randomArrayShuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 != currentIndex) {
+  while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
     temporaryValue = array[currentIndex];
@@ -148,7 +148,7 @@ function checkAnswer(buttonid){
   let button = document.getElementById(buttonid).innerHTML;
   button = button.replace("&amp;",/&/g).replace("&gt;",/>/g).replace("&lt;",/</g).replace("&quot;",/"/g).replace("&apos;",/'/);
   QuestionAnswer = QuestionAnswer.replace("&amp;",/&/g).replace("&gt;",/>/g).replace("&lt;",/</g).replace("&quot;",/"/g).replace("&apos;",/'/);
-  if(button == QuestionAnswer){
+  if(button === QuestionAnswer){
     NumberCorrect++;
     // console.log(NumberCorrect);
     userAnswers[qNum] = '\u{1F7E9}';
@@ -159,7 +159,7 @@ function checkAnswer(buttonid){
 
   userAnswers[qNum] += ' '+button;
 
-  if(qNum==9){
+  if(qNum===9){
     document.getElementById("ans1").setAttribute('disabled','disabled');
     document.getElementById("ans2").setAttribute('disabled','disabled');
     document.getElementById("ans3").setAttribute('disabled','disabled');
@@ -195,7 +195,7 @@ function checkAnswer(buttonid){
 
     // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
           modal.style.display = "none";
         }
 }
@@ -217,67 +217,67 @@ function updateLocalStorage(){
   let newAvg = (avgScore*(numGames-1)+NumberCorrect)/(numGames);
   
   localStorage.setItem('scoreAvg', newAvg);
-    if(NumberCorrect==0){
+    if(NumberCorrect===0){
         let num0 = localStorage.getItem('score0');
         num1++;
         localStorage.setItem('score0', num0);
 
     }
-    if(NumberCorrect==1){
+    if(NumberCorrect===1){
     let num1 = localStorage.getItem('score1');
       num1++;
       localStorage.setItem('score1', num1);
 
     }
-    if(NumberCorrect==2){
+    if(NumberCorrect===2){
     let num2 = localStorage.getItem('score2');
       num2++;
       localStorage.setItem('score2', num2);
 
     }
-    if(NumberCorrect==3){
+    if(NumberCorrect===3){
     let num3 = localStorage.getItem('score3');
       num3++;
       localStorage.setItem('score3', num3);
 
     }
-    if(NumberCorrect==4){
+    if(NumberCorrect===4){
     let num4 = localStorage.getItem('score4');
       num4++;
       localStorage.setItem('score4', num4);
 
     }
-    if(NumberCorrect==5){
+    if(NumberCorrect===5){
     let num5 = localStorage.getItem('score5');
       num5++;
       localStorage.setItem('score5', num5);
 
     }
-    if(NumberCorrect==6){
+    if(NumberCorrect===6){
     let num6 = localStorage.getItem('score6');
       num6++;
       localStorage.setItem('score6', num6);
 
     }
-    if(NumberCorrect==7){
+    if(NumberCorrect===7){
     let num7 = localStorage.getItem('score7');
       num7++;
       localStorage.setItem('score7', num7);
 
     }
-    if(NumberCorrect==8){
+    if(NumberCorrect===8){
     let num8 = localStorage.getItem('score8');
       num8++;
       localStorage.setItem('score8', num8);
 
     }
-    if(NumberCorrect==9){
+    if(NumberCorrect===9){
     let num9 = localStorage.getItem('score9');
       num9++;
       localStorage.setItem('score9', num9);
 
     }
-    if(NumberCorrect==10){
+    if(NumberCorrect===10){
     let num10 = localStorage.getItem('score10');
       num10++;
       localStorage.setItem('score10', num10);
@@ -363,7 +363,7 @@ span.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     modal.style.display = "none";
   }
 }
